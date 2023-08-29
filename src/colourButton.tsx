@@ -9,7 +9,16 @@ export function ColourButtons(props: CBProps): JSX.Element {
     return (
         <IconButton
             aria-label="colour"
-            icon={<CircleIcon boxSize={8} color={`${props.colour}.500`} />}
+            icon={
+                <CircleIcon
+                    boxSize={8}
+                    color={
+                        props.colour === "yellow"
+                            ? `${props.colour}.400`
+                            : `${props.colour}.500`
+                    }
+                />
+            }
             colorScheme={props.colour}
             size="lg"
             isRound={true}
