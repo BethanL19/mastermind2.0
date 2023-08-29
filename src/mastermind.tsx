@@ -136,19 +136,7 @@ export function MasterMind(): JSX.Element {
 }
 
 /*
-set code for round
-start with blank guessBoard - as state?
-show colour options
 guessNp = 1 , max = 10 then you lose
-make guess Fn - call checkCombo & update board with pegs, add 1 to guessNo
-edit guess Fn?/ability to move colours once placed (only before guess is pressed) - could just click over it
-have selected colour (onclick of colour buttons) then 'add' colour to clicked index - board colours could all be white then 
-replaced with colour when added allowing button to change colour
-^pegs could be same but maybe white might need to be re-coloured / could all be grey then get red/black/white
-add guess not allowed alert if row is still all white
 add complete previous turn or something alert if previous guess not made
-add you win alert if all red
 add you lose if run out of guess & reveal code
-add can't guess if guess not complete
-button to show rules?
-*/
+newgame/reset button*/
