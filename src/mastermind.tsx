@@ -113,6 +113,7 @@ export function MasterMind(): JSX.Element {
                 />
             ))}
             <button
+                className="GuessButton"
                 key={rowIndex}
                 onClick={() => {
                     handleGuessButtonClick(rowIndex);

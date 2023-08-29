@@ -6,6 +6,7 @@ import {
     TabPanels,
     Tab,
     TabPanel,
+    Heading,
 } from "@chakra-ui/react";
 import "./style.css";
 import { Instructions } from "./Instructions";
@@ -14,14 +15,19 @@ function App(): JSX.Element {
     return (
         <>
             <ChakraProvider>
-                <Tabs variant="soft-rounded" colorScheme="pink">
+                <Tabs
+                    variant="soft-rounded"
+                    colorScheme="teal"
+                    align="center"
+                    marginTop={"1vh"}
+                >
                     <TabList>
                         <Tab>Game</Tab>
                         <Tab>How To Play</Tab>
                     </TabList>
                     <TabPanels>
                         <TabPanel>
-                            <h1 className="Title">Mastermind</h1>
+                            <Heading className="Title">Mastermind</Heading>
                             <MasterMind />
                         </TabPanel>
                         <TabPanel>
