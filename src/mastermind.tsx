@@ -7,6 +7,7 @@ import {
     shuffleArray,
 } from "./mastermindFns";
 import { ColourButtons } from "./colourButton";
+import ConfettiExplosion from "react-confetti-explosion";
 
 export function MasterMind(): JSX.Element {
     const initialCode = createCode();
@@ -20,6 +21,7 @@ export function MasterMind(): JSX.Element {
         []
     );
     const [_guessButtonPressed, setGuessButtonPressed] = useState(false);
+    const [isExploding, setIsExploding] = useState(false);
 
     let guessNo = 1;
     const options = colours;
@@ -44,6 +46,7 @@ export function MasterMind(): JSX.Element {
         if (shuffleResult.every((colour) => colour === "red")) {
             alert("You Win!");
             setGameWon(true);
+            setIsExploding(true);
         } else if (guessNo === 10) {
             alert("Game Over, refresh to try again!");
             setGameOver(true);
@@ -128,10 +131,20 @@ export function MasterMind(): JSX.Element {
     return (
         <>
             <div className="Options">{optionsButtons}</div>
+            <>
+                {isExploding && (
+                    <ConfettiExplosion
+                        force={0.8}
+                        duration={3000}
+                        particleCount={250}
+                        width={1600}
+                    />
+                )}
+            </>
             <div className="Board">{wholeBoard}</div>
             {/* {code.map((c, index) => (
-        <h1 key={index}>{c}</h1>
-      ))} */}
+                <h1 key={index}>{c}</h1>
+            ))} */}
         </>
     );
 }
