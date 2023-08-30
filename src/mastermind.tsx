@@ -8,11 +8,18 @@ import {
 } from "./mastermindFns";
 import { ColourButtons } from "./colourButton";
 import ConfettiExplosion from "react-confetti-explosion";
+import {
+    Alert,
+    AlertDescription,
+    AlertIcon,
+    AlertTitle,
+} from "@chakra-ui/react";
+let guessNo = 0;
 
 export function MasterMind(): JSX.Element {
     const initialCode = createCode();
 
-    const [selectedColour, setSelectedColour] = useState("");
+    const [selectedColour, setSelectedColour] = useState("white");
     const [board, setBoard] = useState(guessesBoard);
     const [code, _setCode] = useState(initialCode);
     const [gameWon, setGameWon] = useState(false);
@@ -23,7 +30,6 @@ export function MasterMind(): JSX.Element {
     const [_guessButtonPressed, setGuessButtonPressed] = useState(false);
     const [isExploding, setIsExploding] = useState(false);
 
-    let guessNo = 1;
     const options = colours;
 
     const checkGameFinished = () => {
@@ -44,11 +50,9 @@ export function MasterMind(): JSX.Element {
         setBoard(updatedBoard);
         guessNo++;
         if (shuffleResult.every((colour) => colour === "red")) {
-            alert("You Win!");
             setGameWon(true);
             setIsExploding(true);
         } else if (guessNo === 10) {
-            alert("Game Over, refresh to try again!");
             setGameOver(true);
         }
     };
@@ -130,6 +134,40 @@ export function MasterMind(): JSX.Element {
 
     return (
         <>
+            {gameWon && (
+                <Alert
+                    status="success"
+                    variant="subtle"
+                    flexDirection="column"
+                    alignItems="center"
+                    justifyContent="center"
+                    textAlign="center"
+                    height="10vh"
+                    marginTop={"2vh"}
+                >
+                    <AlertIcon />
+                    <AlertTitle>You Win!</AlertTitle>
+                </Alert>
+            )}
+            {gameOver && (
+                <Alert
+                    status="error"
+                    variant="subtle"
+                    flexDirection="column"
+                    alignItems="center"
+                    justifyContent="center"
+                    textAlign="center"
+                    height="10vh"
+                    marginTop={"2vh"}
+                >
+                    <AlertIcon />
+                    <AlertTitle>You Lose!</AlertTitle>
+                    <AlertDescription>
+                        The code was:{" "}
+                        {`${code[0]}, ${code[1]}, ${code[2]}, ${code[3]}`}
+                    </AlertDescription>
+                </Alert>
+            )}
             <div className="Options">{optionsButtons}</div>
             <>
                 {isExploding && (
@@ -153,4 +191,6 @@ export function MasterMind(): JSX.Element {
 guessNp = 1 , max = 10 then you lose
 add complete previous turn or something alert if previous guess not made
 add you lose if run out of guess & reveal code
-newgame/reset button*/
+newgame/reset button - reset code, confetti, board, gameWon
+replaces generic alerts with something better
+*/

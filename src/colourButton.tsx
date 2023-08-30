@@ -20,7 +20,7 @@ export function ColourButtons(props: CBProps): JSX.Element {
                 />
             }
             colorScheme={props.colour}
-            size="lg"
+            size={"lg"}
             isRound={true}
             color={props.colour}
             onClick={() => {
