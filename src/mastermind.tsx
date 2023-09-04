@@ -35,35 +35,50 @@ export function MasterMind(): JSX.Element {
     const checkGameFinished = () => {
         if (gameWon === true) {
             alert("You've already won, please refresh for a new game!");
+            return true;
         } else if (gameOver === true) {
             alert("Game Over, refresh to try again!");
+            return true;
+        }
+    };
+
+    const checkOnCorrectTurn = (guessRowIndex: number) => {
+        const turnRowIndex = 9 - guessNo;
+        if (guessRowIndex < turnRowIndex) {
+            alert("Previous guess incomplete");
+            return false;
+        } else {
+            return true;
         }
     };
 
     const handleMakeGuess = (rowIndex: number) => {
         checkGameFinished();
-        const guess = board[rowIndex].row;
-        const result = checkCombo(guess, code);
-        const shuffleResult = shuffleArray(result);
-        const updatedBoard = [...board];
-        updatedBoard[rowIndex].pegs = shuffleResult;
-        setBoard(updatedBoard);
-        guessNo++;
-        if (shuffleResult.every((colour) => colour === "red")) {
-            setGameWon(true);
-            setIsExploding(true);
-        } else if (guessNo === 10) {
-            setGameOver(true);
+        if (checkOnCorrectTurn(rowIndex)) {
+            const guess = board[rowIndex].row;
+            const result = checkCombo(guess, code);
+            const shuffleResult = shuffleArray(result);
+            const updatedBoard = [...board];
+            updatedBoard[rowIndex].pegs = shuffleResult;
+            setBoard(updatedBoard);
+            guessNo++;
+            if (shuffleResult.every((colour) => colour === "red")) {
+                setGameWon(true);
+                setIsExploding(true);
+            } else if (guessNo === 10) {
+                setGameOver(true);
+            }
         }
     };
     const handleColourSelection = (colour: string) => {
         setSelectedColour(colour);
     };
     const handleAddColourToGuess = (rowIndex: number, columnIndex: number) => {
-        checkGameFinished();
-        const updatedBoard = [...board];
-        updatedBoard[rowIndex].row[columnIndex] = selectedColour;
-        setBoard(updatedBoard);
+        if (checkOnCorrectTurn(rowIndex) && !checkGameFinished()) {
+            const updatedBoard = [...board];
+            updatedBoard[rowIndex].row[columnIndex] = selectedColour;
+            setBoard(updatedBoard);
+        }
     };
     const doNothingWhenPegClicked = (_colour: string) => {
         ("");
@@ -86,7 +101,7 @@ export function MasterMind(): JSX.Element {
             ]);
             setGuessButtonPressed(true);
         } else {
-            alert("guess incomplete");
+            alert("Guess incomplete");
         }
     };
 
@@ -188,9 +203,6 @@ export function MasterMind(): JSX.Element {
 }
 
 /*
-guessNp = 1 , max = 10 then you lose
-add complete previous turn or something alert if previous guess not made
-add you lose if run out of guess & reveal code
-newgame/reset button - reset code, confetti, board, gameWon
-replaces generic alerts with something better
+newgame/reset button - reset code, confetti, board, gameWon, gameOver
+replace generic alerts with something better
 */
