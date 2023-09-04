@@ -2,7 +2,7 @@ export function Instructions(): JSX.Element {
     return (
         <>
             <h1>How To Play:</h1>
-            <ul>
+            <ul className="Instructions-body">
                 <li>
                     The code is made up of any combination of the colours with
                     no duplicates

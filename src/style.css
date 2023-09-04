@@ -28,3 +28,7 @@
     color: whitesmoke;
     margin-top: 2vh;
 }
+.Instructions-body {
+    display: flex;
+    flex-direction: column;
+}
