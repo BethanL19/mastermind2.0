@@ -195,14 +195,6 @@ export function MasterMind(): JSX.Element {
                 )}
             </>
             <div className="Board">{wholeBoard}</div>
-            {/* {code.map((c, index) => (
-                <h1 key={index}>{c}</h1>
-            ))} */}
         </>
     );
 }
-
-/*
-newgame/reset button - reset code, confetti, board, gameWon, gameOver
-replace generic alerts with something better
-*/
