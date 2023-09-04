@@ -4,14 +4,14 @@ export function Instructions(): JSX.Element {
             <h1>How To Play:</h1>
             <ul className="Instructions-body">
                 <li>
-                    The code is made up of any combination of the colours with
-                    no duplicates
+                    The code is made up of 4 of the colours of any combination
+                    with no duplicates
                 </li>
                 <li>
-                    Make guesses from the bottom up filling in the pegs with
-                    colours (click on the colours at the top and click where on
-                    the board you wish to add it) and press the 'Guess' button
-                    to submit a guess
+                    Make guesses from the bottom up filling in the white pegs
+                    with colours (click on the colours at the top and click
+                    where on the board you wish to add it) and press the 'Guess'
+                    button to submit a guess
                 </li>
                 <li>
                     When a guess is made pegs on the righthand side will
