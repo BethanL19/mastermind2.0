@@ -7,14 +7,18 @@ import {
     Tab,
     TabPanel,
     Heading,
+    extendTheme,
 } from "@chakra-ui/react";
 import "./style.css";
 import { Instructions } from "./Instructions";
 
 function App(): JSX.Element {
+    const theme = extendTheme({
+        fonts: { heading: `'Cinzel', san-serif`, body: `'Cinzel', san-serif` },
+    });
     return (
         <>
-            <ChakraProvider>
+            <ChakraProvider theme={theme}>
                 <Tabs
                     variant="soft-rounded"
                     colorScheme="teal"
