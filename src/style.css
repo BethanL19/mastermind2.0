@@ -1,8 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@500&display=swap");
 .Board {
     background-color: aquamarine;
-    margin-left: 1vw;
-    margin-right: 1vw;
+    margin-left: 6vw;
+    margin-right: 6vw;
 }
 .Title {
     display: flex;
@@ -33,4 +33,5 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    list-style-type: none;
 }

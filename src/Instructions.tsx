@@ -16,11 +16,9 @@ export function Instructions(): JSX.Element {
                 <li>
                     When a guess is made pegs on the righthand side will
                     populate as followed:
-                    <ul>
-                        <li>red = right colour, right place</li>
-                        <li>white = right colour, wrong place</li>
-                        <li>black = wrong colour</li>
-                    </ul>
+                    <li>red = right colour, right place</li>
+                    <li>white = right colour, wrong place</li>
+                    <li>black = wrong colour</li>
                 </li>
             </ul>
         </>
